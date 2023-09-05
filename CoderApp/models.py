@@ -5,6 +5,7 @@ from django.db import models
 class Curso(models.Model):
     nombre = models.CharField(max_length=40)
     comision = models.IntegerField()
+    fech_creacion = models.DateField(null=True, blank=True)
     
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=30)

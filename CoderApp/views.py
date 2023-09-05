@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from .models import Curso
+from .forms import CursoFormulario
+
 
 # Create your views here.
 
@@ -27,3 +29,30 @@ def estudiantes(request):
 
 def entregables(request):
     return render(request, "entregables.html")
+
+def cursoFormulario(request):
+    print('method', request.method)
+    print('POST', request.POST)
+    
+        
+    if request == 'POST':
+        miFormulario = CursoFormulario(request.POST)
+        if miFormulario.is_valid():
+            data = miFormulario.cleaned_data
+            curso = Curso(nombre = data["curso"], comision = data["comision"])
+            curso.save()
+            return render(request, "inicio.html" )
+    else: 
+        miFormulario = CursoFormulario()
+        return render(request, "cursoFormulario.html" ,{"miFormulario": miFormulario})
+    
+def busquedaComision(request):
+    return render(request, "busquedaComision.html")
+
+def buscar(request: HttpRequest):
+    if request.GET["comision"]:
+        comision = request.GET["comision"]
+        curso = Curso.objects.get(comision=comision) #recupera el curso buscado
+        return render(request, "resultadosBusqueda.html", {"curso":curso})
+    else:
+        return HttpResponse(f"Debe agregar comision")
