@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=stykl, initial-scale=1.0">
-    <title>cursos</title>
-</head>
-<body style="background-color: skyblue;"> 
+{% extends "padre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
 
-    <h1>Vista cursos</h1>
+    <!-- Aqui va lo que cambia-->
+    <h1>Cursos</h1>\
+    <p>Aca va la info de los cursos</p>
 
-</body>
-</html>
+{% endblock %}

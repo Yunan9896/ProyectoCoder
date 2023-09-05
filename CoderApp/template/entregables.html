@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="background-color: orange;">
+{% extends "padre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
 
-    <h1>Vista entregables</h1>
+    <!-- Aqui va lo que cambia-->
+    <h1>Entregables</h1>\
+    <p>Aca va la info de los Entregables</p>
 
-</body>
-</html>
+{% endblock %}
